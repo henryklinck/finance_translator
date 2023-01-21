@@ -7,3 +7,5 @@ class TranslateForm(forms.Form):
         super().__init__(*args, **kwargs)
         for key, field in self.fields.items():
             field.label = ""
+            field.required = False
+            
