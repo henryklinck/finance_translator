@@ -11,12 +11,14 @@
     <header>
         <h1 class="page-title">Finance Bro Translator</h1>
     </header>
-    <form action="/" method="post">{% csrf_token %}
-        {{ form }} <br>
-        <input type="submit" value="Translate" class="submit-button">
-    </form>
-    <div class="translation-output">
-        {% if input_status %}{{translation}}{% endif %}
+    <div class="translation">
+        <form action="/" method="post">{% csrf_token %}
+            {{ form }} <br>
+            <input type="submit" value="Translate" class="submit-button">
+        </form>
+        <div class="translation-output">
+            {% if input_status %}{{translation}}{% endif %}
+        </div>
     </div>
 </body>
 

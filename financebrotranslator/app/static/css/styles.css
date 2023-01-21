@@ -26,9 +26,21 @@ textarea {
     border-style: inset;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .page-title {
     text-align: center;
     font-size: 3rem;
+}
+
+.translation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .submit-button {
