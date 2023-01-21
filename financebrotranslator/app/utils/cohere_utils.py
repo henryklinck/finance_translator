@@ -1,4 +1,5 @@
 import cohere
+from cohere.classify import Example
 import json
 import os
 import re
@@ -19,6 +20,8 @@ def generate(prompt):
 
     prompt_subject = generate_subject(prompt)
 
+    classify_subject = classify_text(prompt)
+
     prompt = 'Explain what this ' + prompt_subject + 'message means to a 5 year-old: \"' + prompt + '\" \n'
 
     tokens = int(tokenize(prompt))
@@ -29,7 +32,7 @@ def generate(prompt):
         max_tokens=tokens,  
         temperature=0.9)
     
-    return "Subject Prompt: " + prompt_subject + response.generations[0].text
+    return "Classify: " + str(classify_subject) + " .   Subject Prompt: " + prompt_subject + response.generations[0].text
 
 def generate_subject(prompt):
     prompt = "List the subject in school would study this message: " + prompt + "\n \n Subject:" 
@@ -43,3 +46,37 @@ def generate_subject(prompt):
         temperature=0.9)
 
     return response.generations[0].text
+
+def classify_text(prompt):
+    # Output whether propmt relates to:
+    # 1.) The Overall Economy/Market (m)
+    # 2.) A Specific Investment (i)
+
+    # Opening market JSON file
+    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/market_text.json", 'r') as mrk_openfile:
+ 
+        # Reading from market json file
+        json_market_exs = json.load(mrk_openfile)
+
+    # Opening investment JSON file
+    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/investment_text.json", 'r') as inv_openfile:
+ 
+        # Reading from investment json file
+        json_invest_exs = json.load(inv_openfile)
+
+    examples = [];
+
+    for i in range(6):
+        curr_example = Example(json_market_exs[str("example" + str(i + 1))], "m")
+        examples.append(curr_example)
+        curr_example = Example(json_invest_exs[str("example" + str(i + 1))], "i")
+        examples.append(curr_example)
+
+    co = initialize_cohere()
+
+    response = co.classify(
+        model='large',
+        inputs=[prompt],
+        examples=examples)
+    
+    return response
