@@ -13,9 +13,11 @@
     </header>
     <form action="/" method="post">{% csrf_token %}
         {{ form }} <br>
-        <input type="submit" value="Translate">
+        <input type="submit" value="Translate" class="submit-button">
     </form>
-    {% if input_status %}{{translation}}{% endif %}
+    <div class="translation-output">
+        {% if input_status %}{{translation}}{% endif %}
+    </div>
 </body>
 
 </html>

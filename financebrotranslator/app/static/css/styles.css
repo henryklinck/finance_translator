@@ -19,7 +19,25 @@ header {
     padding: 1rem;
 }
 
+textarea {
+    margin: 1rem;
+    border-width: 2pt;
+    border-color: black;
+    border-style: inset;
+}
+
 .page-title {
     text-align: center;
     font-size: 3rem;
+}
+
+.submit-button {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: darkgray;
+}
+
+.translation-output {
+    margin: 1rem;
 }
