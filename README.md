@@ -1,2 +1,2 @@
-# financebrotranslator
-Finance Bro Translator
+# Finance to Everday
+Finance Speak Translator
