@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <head>
     <title>Finance Bro Translator</title>
@@ -13,7 +14,14 @@
     </header>
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
-            {{ form }}
+            <div class="translation-input">
+                {{ form }}
+                <div class="record-button">
+                    <button>
+                        <i class="fa fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
             <input type="submit" value="Translate" class="submit-button">
         </form>
         <div class="translation-output">
