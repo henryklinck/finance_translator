@@ -21,13 +21,11 @@ header {
     border-bottom-width: 7px;
     display: flex;
     flex-direction: row ;
+    height: 20vh;
     
 }
 
-.top-header{
-    display: flex;
-    flex-direction: row;
-}
+
 
 
 h4 {
@@ -90,6 +88,7 @@ form {
     align-items: center;
     background-color: #414a4c ;
     padding-top: 15px;
+    height: 80vh;
     
 }
 
