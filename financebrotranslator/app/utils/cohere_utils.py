@@ -79,4 +79,5 @@ def classify_text(prompt):
         inputs=[prompt],
         examples=examples)
     
-    return response
+    return response.classifications
+
