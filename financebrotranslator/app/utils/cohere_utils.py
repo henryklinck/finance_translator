@@ -14,15 +14,31 @@ def tokenize(prompt):
     return len(co.tokenize(prompt).token_strings)
 
 def generate(prompt):
+    # Current generate output is not great, need to continue to tweak prompts to improve performace.
 
-    prompt = 'Explain what this economic news means to a 5 year-old: \"' + prompt + '\" \n'
+    prompt_subject = generate_subject(prompt)
+
+    prompt = 'Explain what this ' + prompt_subject + 'message means to a 5 year-old: \"' + prompt + '\" \n'
 
     tokens = int(tokenize(prompt))
     co = initialize_cohere()
     response = co.generate(
         model='command-xlarge-nightly',  
         prompt=prompt,  
-        max_tokens=100,  
+        max_tokens=tokens,  
         temperature=0.9)
     
+    return "Subject Prompt: " + prompt_subject + response.generations[0].text
+
+def generate_subject(prompt):
+    prompt = "List the subject in school would study this message: " + prompt + "\n \n Subject:" 
+
+    tokens = int(tokenize(prompt))
+    co = initialize_cohere()
+    response = co.generate(
+        model='command-xlarge-nightly',  
+        prompt=prompt,  
+        max_tokens=20,  
+        temperature=0.9)
+
     return response.generations[0].text
