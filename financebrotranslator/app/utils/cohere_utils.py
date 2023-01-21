@@ -1,6 +1,7 @@
 import cohere
 import json
 import os
+import re
 
 def initialize_cohere():
     with open(f"{os.path.dirname(os.path.abspath(__file__))}/api_key.json") as f:
