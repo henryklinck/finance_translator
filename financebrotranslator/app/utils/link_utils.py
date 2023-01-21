@@ -39,7 +39,7 @@ def add_definition_links(text):
 
     while i < len(text) and j < len(text):
         current = root
-        while text[j].upper() in current.children:
+        while j < len(text) and text[j].upper() in current.children:
             current = current.children[text[j].upper()]
             j += 1
             if current.word != None and (j == len(text) or text[j] in (' ', '.', ',')):
@@ -58,6 +58,7 @@ def add_definition_links(text):
                 output += text[start:j]
                 j -= 1
         j += 1
+    
 
     return output
 
