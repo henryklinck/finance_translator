@@ -14,12 +14,15 @@ def tokenize(prompt):
     return len(co.tokenize(prompt).token_strings)
 
 def generate(prompt):
-    tokens = int(1.5 * tokenize(prompt))
+
+    prompt = 'Explain what this economic news means to a 5 year-old: \"' + prompt + '\" \n'
+
+    tokens = int(tokenize(prompt))
     co = initialize_cohere()
     response = co.generate(
         model='command-xlarge-nightly',  
         prompt=prompt,  
-        max_tokens=tokens,  
-        temperature=0.6)
+        max_tokens=100,  
+        temperature=0.9)
     
     return response.generations[0].text
