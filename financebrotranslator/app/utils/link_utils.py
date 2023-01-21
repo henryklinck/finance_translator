@@ -61,6 +61,3 @@ def add_definition_links(text):
     
 
     return output
-
-if __name__ == "__main__":
-    print(add_definition_links("The Fed raises or lowers the interest rate charged to banks to control the supply of money."))
