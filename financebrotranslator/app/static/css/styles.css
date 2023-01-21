@@ -20,19 +20,16 @@ header {
     border-style: solid;
     border-bottom-width: 7px;
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     height: 20vh;
-    
+
 }
-
-
-
 
 h4 {
     text-align: left;
 }
 
-.icon{
+.icon {
     margin-top: 11px;
     width: 50px;
     height: 50px;
@@ -53,7 +50,7 @@ textarea {
     background-color: lightgrey;
 }
 
-.translation-input button{
+.translation-input button {
     font-size: 32px;
     background-color: white;
     display: block;
@@ -72,8 +69,6 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
 }
 
 .page-title {
@@ -86,13 +81,12 @@ form {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #414a4c ;
+    background-color: #414a4c;
     padding-top: 15px;
     height: 80vh;
-    
 }
 
-.text-buttons{
+.text-buttons {
 
     display: flex;
     flex-direction: row;
@@ -107,6 +101,7 @@ form {
     border-width: 2px;
     border-radius: 5pt;
 }
+
 .submit-button:hover {
     margin: 1rem;
     font-size: 1.5rem;
@@ -115,10 +110,10 @@ form {
     border-style: solid;
     border-width: 2pt;
     border-radius: 5pt;
-    
+
 }
 
-.clear-button{
+.clear-button {
     margin: 1rem;
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -127,7 +122,8 @@ form {
     border-width: 2px;
     border-radius: 5pt;
 }
-.clear-button:hover{
+
+.clear-button:hover {
     margin: 1rem;
     font-size: 1.5rem;
     padding: 0.5rem;
@@ -137,17 +133,15 @@ form {
     border-radius: 5pt;
 }
 
-
-
-.translation-output{
+.translation-output {
     margin: 1rem;
     background-color: lightgray;
     border-style: solid;
     border-radius: 5pt;
     border-width: 2pt;
     padding: 5pt
-
 }
+
 /* .translation-output-text{
     background-color: lightgrey;
     padding: 2pt;
