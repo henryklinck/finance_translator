@@ -5,6 +5,7 @@ import requests
 
 URL_BASE = "https://investopedia.com/terms-beginning-with-"
 JSON_FILE = f"{os.path.dirname(os.path.dirname(os.path.abspath(__file__)))}/app/static/data/definitions.json"
+WORD_BLACKLIST = {"NOW", "WILL"}
 
 def main():
     first_page = 4769351
@@ -25,10 +26,13 @@ def main():
         for term in terms:
             if term.text[-1] == ')':
                 idx = term.text.find('(')
-                definitions[term.text[:idx - 1].upper()] = term["href"]
-                definitions[term.text[idx + 1:-1].upper()] = term["href"]
+                if term.text[:idx - 1].upper() not in WORD_BLACKLIST:
+                    definitions[term.text[:idx - 1].upper()] = term["href"]
+                if term.text[idx + 1:-1].upper() not in WORD_BLACKLIST:
+                    definitions[term.text[idx + 1:-1].upper()] = term["href"]
             else:
-                definitions[term.text.upper()] = term["href"]
+                if term.text.upper() not in WORD_BLACKLIST:
+                    definitions[term.text.upper()] = term["href"]
 
     with open(JSON_FILE, "w") as f:
         json.dump(definitions, f, indent=4)
