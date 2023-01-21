@@ -24,7 +24,11 @@
                     </button>
                 </div>
             </div>
-            <input type="submit" value="Translate" class="submit-button">
+            
+            <div class="text-buttons">
+                <input type="submit" value="Translate" class="submit-button">
+                <input type="reset" value="Clear Text" class="clear-button">
+            </div>
         </form>
         <div class="translation-output">
             {% if input_status %}{{translation|safe}}{% endif %}
