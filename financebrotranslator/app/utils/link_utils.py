@@ -37,7 +37,7 @@ def add_definition_links(text):
     j = 0
     output = ""
 
-    while i < len(text):
+    while i < len(text) and j < len(text):
         current = root
         while text[j].upper() in current.children:
             current = current.children[text[j].upper()]
@@ -56,7 +56,7 @@ def add_definition_links(text):
                     i += 1
                 j = i = i + 1
                 output += text[start:j]
-            j -= 1
+                j -= 1
         j += 1
 
     return output
