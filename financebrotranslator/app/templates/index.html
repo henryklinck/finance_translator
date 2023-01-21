@@ -19,8 +19,8 @@
             <div class="translation-input">
                 {{ form }}
                 <div class="record-button">
-                    <button>
-                        <i class="fa fa-microphone"></i>
+                    <button type="button" onclick="startConverting()" id="mic-button">
+                        <i class="fa fa-microphone" id="mic-icon"></i>
                     </button>
                 </div>
             </div>
@@ -35,5 +35,49 @@
         </div>
     </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    var recording = false;
+    var spr = new webkitSpeechRecognition();
+    spr.continuous=true;
+    spr.interimResults=true;
+    spr.lang='en-IN';
+
+    function startConverting()
+           {
+            recording = !recording;
+
+            if (recording) {
+                document.getElementById("mic-icon").className = "fa fa-square";
+                document.getElementById("mic-button").style.backgroundColor = "lightgrey";
+
+                var r = document.getElementById('id_text');
+
+                spr.start();
+                var ftr='';
+
+                spr.onresult=function(event){
+                    var interimTranscripts='';
+                    for(var i=event.resultIndex;i<event.results.length;i++)
+                    {
+                        var transcript=event.results[i][0].transcript;
+                        transcript.replace("\n","<br>")
+                        if(event.results[i].isFinal){
+                            ftr+=transcript;
+                        }
+                        else
+                        interimTranscripts+=transcript;
+                    }
+                    r.innerHTML = ftr + interimTranscripts;
+                };
+            } else {
+                document.getElementById("mic-icon").className = "fa fa-microphone";
+                document.getElementById("mic-button").style.backgroundColor = "white";
+                spr.abort();
+            }
+
+           }
+</script>
 
 </html>
