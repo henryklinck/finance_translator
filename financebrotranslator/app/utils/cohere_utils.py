@@ -2,6 +2,7 @@ import cohere
 from cohere.classify import Example
 import json
 import os
+import re
 
 def initialize_cohere():
     with open(f"{os.path.dirname(os.path.abspath(__file__))}/api_key.json") as f:
@@ -45,6 +46,7 @@ def generate_subject(prompt):
         temperature=0.9)
 
     return response.generations[0].text
+<<<<<<< HEAD
 
 def classify_text(prompt):
     # Output whether propmt relates to:
@@ -79,3 +81,5 @@ def classify_text(prompt):
         examples=examples)
     
     return response
+=======
+>>>>>>> 6c1de87e9957b6799f9b12e3e53a7434a19a16e4

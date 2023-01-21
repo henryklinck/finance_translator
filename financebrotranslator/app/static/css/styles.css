@@ -15,17 +15,33 @@ body {
 }
 
 header {
-    background-color: darkgray;
+    background-color: #025928;
     padding: 1rem;
+    border-style: solid;
+    border-bottom-width: 7px;
+    display: flex;
+    flex-direction: row ;
+    height: 20vh;
+    
 }
 
+
+
+
 h4 {
-    text-align: center;
+    text-align: left;
+}
+
+.icon{
+    margin-top: 11px;
+    width: 50px;
+    height: 50px;
 }
 
 textarea {
     border-radius: 5pt;
     margin: 1rem 1rem 0 1rem;
+    background-color: lightgrey;
 }
 
 .translation-input {
@@ -34,6 +50,7 @@ textarea {
     border-style: inset;
     border-radius: 5pt;
     margin: 1rem;
+    background-color: lightgrey;
 }
 
 .translation-input button{
@@ -55,26 +72,83 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    
 }
 
 .page-title {
-    text-align: center;
+    text-align: left;
     font-size: 3rem;
+    padding-left: 20px;
 }
 
 .translation {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    background-color: #414a4c ;
+    padding-top: 15px;
+    height: 80vh;
+    
+}
+
+.text-buttons{
+
+    display: flex;
+    flex-direction: row;
 }
 
 .submit-button {
     margin: 1rem;
     font-size: 1.5rem;
     padding: 0.5rem;
-    background-color: darkgray;
+    background-color: #025928;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5pt;
+}
+.submit-button:hover {
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2pt;
+    border-radius: 5pt;
+    
 }
 
-.translation-output {
+.clear-button{
     margin: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: #025928;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5pt;
 }
+.clear-button:hover{
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5pt;
+}
+
+
+
+.translation-output{
+    margin: 1rem;
+    background-color: lightgray;
+    border-style: solid;
+    border-radius: 5pt;
+    border-width: 2pt;
+    padding: 5pt
+
+}
+/* .translation-output-text{
+    background-color: lightgrey;
+    padding: 2pt;
+} */

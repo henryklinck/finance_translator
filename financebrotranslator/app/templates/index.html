@@ -10,8 +10,12 @@
 
 <body>
     <header>
+        <img src="static/css/images/suit-and-tie-icon.png" class="icon"/>
+        <div>
         <h1 class="page-title">Finance Bro Translator</h1>
-        <h4 class="page-description">Welcome to Finance Bro Translator. This program will make jargon-filled speech understandable!</h4>
+        <h4 class="page-description">Welcome to Finance Bro Translator. This program will make jargon-filled speech
+            understandable!</h4>
+        </div>
     </header>
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
@@ -23,17 +27,20 @@
                     </button>
                 </div>
             </div>
-            <input type="submit" value="Translate" class="submit-button">
+            
+            <div class="text-buttons">
+                <input type="submit" value="Translate" class="submit-button">
+                <input type="reset" value="Clear Text" class="clear-button">
+            </div>
         </form>
         <div class="translation-output">
-            {% if input_status %}{{translation}}{% endif %}
+            {% if input_status %}{{translation|safe}}{% endif %}
         </div>
     </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-
     var recording = false;
     var spr = new webkitSpeechRecognition();
     spr.continuous=true;
@@ -47,9 +54,9 @@
             if (recording) {
                 document.getElementById("mic-icon").className = "fa fa-square";
                 document.getElementById("mic-button").style.backgroundColor = "lightgrey";
-        
+
                 var r = document.getElementById('id_text');
-                
+
                 spr.start();
                 var ftr='';
 

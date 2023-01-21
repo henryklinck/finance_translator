@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .forms import TranslateForm
-from .utils import cohere_utils
+from .utils import cohere_utils, link_utils
 
 # Create your views here.
 def index(request):
@@ -12,7 +12,10 @@ def index(request):
         form = TranslateForm(request.POST)
         if form.is_valid() and (request.POST["text"] != ""):
             input_status = True
-            translation = cohere_utils.generate(request.POST["text"])
+            raw_translation = cohere_utils.generate(request.POST["text"])
+            print("here")
+            translation = link_utils.add_definition_links(raw_translation)
+        form = TranslateForm()
     else:
         form = TranslateForm()
         input_status = False
