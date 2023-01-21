@@ -21,6 +21,7 @@ header {
     border-bottom-width: 7px;
     display: flex;
     flex-direction: row ;
+    
 }
 
 .top-header{
@@ -30,7 +31,7 @@ header {
 
 
 h4 {
-    text-align: center;
+    text-align: left;
 }
 
 .icon{
@@ -78,16 +79,18 @@ form {
 }
 
 .page-title {
-    text-align: center;
+    text-align: left;
     font-size: 3rem;
     padding-left: 20px;
 }
 
 .translation {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     background-color: #414a4c ;
+    padding-top: 15px;
+    
 }
 
 .submit-button {
@@ -109,8 +112,12 @@ form {
     border-radius: 5pt;
     
 }
+.translation-output{
+    margin: 1rem;
+    text-align: center;
 
-.translation-output {
+}
+.translation-output-text{
     margin: 1rem;
     background-color: lightgray;
     border-style: solid;

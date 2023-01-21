@@ -10,9 +10,13 @@ def index(request):
 
     if request.method == 'POST':
         form = TranslateForm(request.POST)
+
+
+
         if form.is_valid() and (request.POST["text"] != ""):
             input_status = True
             translation = cohere_utils.generate(request.POST["text"])
+        form = TranslateForm()
     else:
         form = TranslateForm()
         input_status = False
