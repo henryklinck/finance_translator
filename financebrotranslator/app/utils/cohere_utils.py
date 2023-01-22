@@ -32,7 +32,7 @@ def generate(prompt):
         max_tokens=tokens,  
         temperature=0.9)
     
-    return "Classify: " + str(classify_subject) + " .   Subject Prompt: " + prompt_subject + response.generations[0].text
+    return "Classify: " + classify_subject + " .   Subject Prompt: " + prompt_subject + response.generations[0].text
 
 def generate_subject(prompt):
     prompt = "List the subject in school would study this message: " + prompt + "\n \n Subject:" 
@@ -75,9 +75,9 @@ def classify_text(prompt):
     co = initialize_cohere()
 
     response = co.classify(
-        model='large',
+        model='small',
         inputs=[prompt],
         examples=examples)
     
-    return response.classifications
+    return response.classifications[0].prediction
 
