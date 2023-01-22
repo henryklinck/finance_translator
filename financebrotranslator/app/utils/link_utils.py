@@ -56,8 +56,7 @@ def add_definition_links(text):
                     i += 1
                 j = i = i + 1
                 output += text[start:j]
-                j -= 1
-        j += 1
+            else:
+                j += 1
     
-
     return output
