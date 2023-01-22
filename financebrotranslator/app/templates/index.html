@@ -36,6 +36,7 @@
                 <input type="submit" name="action" value="Translate" class="submit-button">
                 <input type="submit" name="action" value="Clear Text" class="submit-button">
             </div>
+
         </form>
         <div class="translation-right">
 
@@ -84,14 +85,13 @@
                 </div>
 
             </div>
-            <!-- <div class="switch-button"><span class="active"></span>
-                <button class="switch-button-case-left active-case" id="btn">Summary</button>
-                <button class="switch-button-case-right" id="btn">Stocks</button>
-            </div> -->
-            <div class="switch-button"><span class="active"></span>
-                <button class="switch-button-case-left active-case" id="btn">Summary</button>
-                <button class="switch-button-case-right" id="btn">Stocks</button>
-            </div>
+
+            {% if input_status %}
+                <div class="switch-button"><span class="active"></span>
+                    <button class="switch-button-case-left active-case" id="btn">Summary</button>
+                    <button class="switch-button-case-right" id="btn">Stocks</button>
+                </div>
+            {% endif %}
         </div>
     </div>
 </body>
@@ -140,7 +140,6 @@
     }
 
     function startSpeaking() {
-
         const synth = window.speechSynthesis;
         let ourText = `{{raw}}`;
         const Speak = new SpeechSynthesisUtterance(ourText);
