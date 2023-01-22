@@ -6,12 +6,12 @@
 
 <head>
     <title>Finance Bro Translator</title>
-    <link rel="icon" type="image/x-icon" href="static/css/images/suit-and-tie-icon.png"/>
+    <link rel="icon" type="image/x-icon" href="static/css/images/suit-and-tie-icon.png" />
 </head>
 
 <body>
     <header>
-        <img src="static/css/images/suit-and-tie-icon.png" class="icon"/>
+        <img src="static/css/images/suit-and-tie-icon.png" class="icon" />
         <div class="header-text">
             <h1 class="page-title">Finance Bro Translator</h1>
             <h4 class="page-description">Welcome to Finance Bro Translator. This program will make jargon-filled speech
@@ -28,16 +28,16 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="text-buttons">
-                <input type="submit" value="Translate" class="submit-button">
-                <input type="reset" value="Clear Text" class="clear-button">
+                <input type="submit" name="action" value="Translate" class="submit-button">
+                <input type="submit" name="action" value="Clear Text" class="clear-button">
             </div>
         </form>
         <div class="translation-output">
             <div class="translation-output-text">
 
-            {% if input_status %}{{translation|safe}}{% endif %}
+                {% if input_status %}{{translation|safe}}{% endif %}
             </div>
         </div>
     </div>
@@ -47,44 +47,42 @@
 <script>
     var recording = false;
     var spr = new webkitSpeechRecognition();
-    spr.continuous=true;
-    spr.interimResults=true;
-    spr.lang='en-IN';
+    spr.continuous = true;
+    spr.interimResults = true;
+    spr.lang = 'en-IN';
 
-    function startConverting()
-           {
-            recording = !recording;
+    function startConverting() {
+        recording = !recording;
 
-            if (recording) {
-                document.getElementById("mic-icon").className = "fa fa-square";
-                document.getElementById("mic-button").style.backgroundColor = "lightgrey";
+        if (recording) {
+            document.getElementById("mic-icon").className = "fa fa-square";
+            document.getElementById("mic-button").style.backgroundColor = "lightgrey";
 
-                var r = document.getElementById('id_text');
+            var r = document.getElementById('id_text');
 
-                spr.start();
-                var ftr='';
+            spr.start();
+            var ftr = '';
 
-                spr.onresult=function(event){
-                    var interimTranscripts='';
-                    for(var i=event.resultIndex;i<event.results.length;i++)
-                    {
-                        var transcript=event.results[i][0].transcript;
-                        transcript.replace("\n","<br>")
-                        if(event.results[i].isFinal){
-                            ftr+=transcript;
-                        }
-                        else
-                        interimTranscripts+=transcript;
+            spr.onresult = function (event) {
+                var interimTranscripts = '';
+                for (var i = event.resultIndex; i < event.results.length; i++) {
+                    var transcript = event.results[i][0].transcript;
+                    transcript.replace("\n", "<br>")
+                    if (event.results[i].isFinal) {
+                        ftr += transcript;
                     }
-                    r.innerHTML = ftr + interimTranscripts;
-                };
-            } else {
-                document.getElementById("mic-icon").className = "fa fa-microphone";
-                document.getElementById("mic-button").style.backgroundColor = "white";
-                spr.abort();
-            }
+                    else
+                        interimTranscripts += transcript;
+                }
+                r.innerHTML = ftr + interimTranscripts;
+            };
+        } else {
+            document.getElementById("mic-icon").className = "fa fa-microphone";
+            document.getElementById("mic-button").style.backgroundColor = "white";
+            spr.abort();
+        }
 
-           }
+    }
 </script>
 
 </html>
