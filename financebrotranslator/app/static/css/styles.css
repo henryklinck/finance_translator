@@ -26,13 +26,13 @@ header {
 }
 
 
-.header-text{
+.header-text {
     padding-left: 20px;
 }
 
 h4 {
     text-align: left;
-    
+
 }
 
 .icon {
@@ -75,15 +75,15 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    
-    
+
+
+
 }
 
 .page-title {
     text-align: left;
     font-size: 3rem;
-    
+
 }
 
 .translation {
@@ -94,7 +94,7 @@ form {
     padding-top: 15px;
     height: 80vh;
     justify-content: center;
-    
+
 }
 
 .text-buttons {
@@ -151,16 +151,17 @@ form {
     border-radius: 5pt;
     border-width: 2pt;
     padding: 5pt;
-    
+
     width: 30%;
     height: 50%;
     margin-bottom: 10px;
 
 }
-.translation-output-text{
+
+.translation-output-text {
     margin: 1rem;
     background-color: lightgray;
-    
+
 
 }
 
