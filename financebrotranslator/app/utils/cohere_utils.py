@@ -35,9 +35,11 @@ def generate(input):
         temperature=0.9)
 
     output = response.generations[0].text
+
+    final_output = clean_output(output)
     
     # return "Classification: " + subject + " --- \n " + response.generations[0].text
-    return clean_output(output)
+    return final_output
 
 def classify_text(input):
     # Output whether propmt relates to:
