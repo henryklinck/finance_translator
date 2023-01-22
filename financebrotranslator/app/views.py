@@ -3,10 +3,13 @@ from django.shortcuts import render
 from .forms import TranslateForm
 from .utils import cohere_utils, link_utils
 
+
 # Create your views here.
 def index(request):
     input_status = False
     translation = ""
+    
+    
 
 
     if request.method == 'POST':

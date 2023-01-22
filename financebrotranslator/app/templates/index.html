@@ -21,7 +21,7 @@
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
             <div class="translation-input">
-                {{ form }}
+                {{form}}
                 <div class="record-button">
                     <button type="button" onclick="startConverting()" id="mic-button">
                         <i class="fa fa-microphone" id="mic-icon"></i>
@@ -42,6 +42,8 @@
         </div>
     </div>
 </body>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
