@@ -21,7 +21,9 @@ def generate(input):
     subject = classify_text(input) 
 
     # Based on subject of input, prompt co:here ,command, to explain the input in simplier terms
-    prompt = 'Explain what this ' + subject + 'message means to a 5 year-old: \"' + input + '\" \n'
+    # prompt = 'Explain what this ' + subject + ' message means to a 5 year-old: \"' + input + '\" \n'
+    # prompt = 'Do the foll0wing for the text:\n1. Find all of the finance terms that are in the text and list them in a dictionary format with key=term: value=description \n2. Extract the different companies involved \n3. Simplify the information \nText:' + input + '\" \n'
+    prompt = 'Shorten and simplify what this ' + subject + ' message means: \"' + input + '\" \n'
 
     # Output should be a max size of input.length * 1.3
     tokens = round(1.3 * int(tokenize(input)))
@@ -32,7 +34,7 @@ def generate(input):
         max_tokens=tokens,  
         temperature=0.9)
     
-    return "Classify: " + subject + " --- " + response.generations[0].text
+    return "Classification: " + subject + " --- \n " + response.generations[0].text
 
 def classify_text(input):
     # Output whether propmt relates to:
