@@ -15,7 +15,7 @@ def index(request):
             raw_translation = cohere_utils.generate(request.POST["text"])
             print("here")
             translation = link_utils.add_definition_links(raw_translation)
-        form = TranslateForm()
+        # form = TranslateForm()
     else:
         form = TranslateForm()
         input_status = False
