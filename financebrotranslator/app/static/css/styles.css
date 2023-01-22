@@ -274,7 +274,7 @@ form {
     height: 100%;
     z-index: -1;
     transition: 0.3s ease-out all;
-    border-radius: 100px;
+    border-radius: 5px;
 }
 
 .switch-button .active-case {
