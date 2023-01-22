@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .forms import TranslateForm
-from .utils import cohere_utils, link_utils
+from .utils import cohere_utils, link_utils, sp500_utils
 
 
 # Create your views here.
@@ -9,6 +9,7 @@ def index(request):
     input_status = False
     translation = ""
     companies = ""
+    raw_translation = ""
 
     if request.method == 'POST':
         if request.POST["action"] == "Translate":

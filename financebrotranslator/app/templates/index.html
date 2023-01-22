@@ -19,10 +19,7 @@
         </div>
     </header>
 
-    <div class="switch-button"><span class="active"></span>
-        <button class="switch-button-case-left active-case" id="btn">Summary</button>
-        <button class="switch-button-case-right" id="btn">Stocks</button>
-    </div>
+    
 
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
@@ -37,46 +34,55 @@
 
             <div class="text-buttons">
                 <input type="submit" name="action" value="Translate" class="submit-button">
+                <input type="submit" name="action" value="Clear Text" class="submit-button">
             </div>
         </form>
+        <div class="translation-right">
 
-        <div class="translation-output">
+            
+            <div class="translation-output">
+                
+                <div class="translation-output-text">
 
-            <div class="translation-output-text">
-
-            <div id="summary">
-                {% if input_status %}
-                    {{translation|safe}}
-                    <div class="record-button">
-                        <button type="button" onclick="startSpeaking()" id="mic-button">
-                            <i class="fa fa-volume-up" id="mic-icon"></i>
-                        </button>
-                    </div>
-                {% endif %}
-            </div>
-
-            <div id="stocks">
-                {% for company in companies %}
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-{{company}}/" rel="noopener" target="_blank"><span class="blue-text">{{company}} stock price</span></a> by TradingView</div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                    {
-                    "symbol": "NASDAQ:{{company}}",
-                    "width": 350,
-                    "colorTheme": "light",
-                    "isTransparent": true,
-                    "locale": "en"
-                }
-                    </script>
+                <div id="summary">
+                    {% if input_status %}
+                        {{translation|safe}}
+                        <div class="record-button">
+                            <button type="button" onclick="startSpeaking()" id="mic-button">
+                                <i class="fa fa-volume-up" id="mic-icon"></i>
+                            </button>
+                        </div>
+                    {% endif %}
                 </div>
-                <br>
-                {% endfor %}
+
+                <div id="stocks">
+                    {% for company in companies %}
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-{{company}}/" rel="noopener" target="_blank"><span class="blue-text">{{company}} stock price</span></a> by TradingView</div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                        {
+                        "symbol": "NASDAQ:{{company}}",
+                        "width": 350,
+                        "colorTheme": "light",
+                        "isTransparent": true,
+                        "locale": "en"
+                    }
+                        </script>
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+                
+
             </div>
-
+            
+            </div>
+            <div class="switch-button"><span class="active"></span>
+                <button class="switch-button-case-left active-case" id="btn">Summary</button>
+                <button class="switch-button-case-right" id="btn">Stocks</button>
+            </div>
         </div>
-        </div>
-
     </div>
 </body>
 

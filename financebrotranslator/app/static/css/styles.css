@@ -105,13 +105,19 @@ form {
 
 .translation {
     display: flex;
-    flex-direction: row;
+    flex-direction: col;
     align-items: center;
     background-color: #414a4c;
     padding-top: 15px;
     height: 80vh;
     justify-content: center;
 
+}
+.text-boxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 15px;
 }
 
 .text-buttons {
@@ -161,6 +167,13 @@ form {
     border-radius: 5pt;
 }
 
+.translation-right{
+
+    width: 50%;
+    height: 70%;
+    margin-bottom: 130px;
+}
+
 .translation-output {
     margin: 1rem;
     background-color: lightgray;
@@ -168,9 +181,9 @@ form {
     border-radius: 5pt;
     border-width: 2pt;
     padding: 5pt;
-    width: 30%;
-    height: 50%;
-    margin-bottom: 10px;
+    width: 80%;
+    height: 100%;
+    
 
 }
 
