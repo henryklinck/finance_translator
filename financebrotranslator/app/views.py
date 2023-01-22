@@ -8,7 +8,7 @@ from .utils import cohere_utils, link_utils, sp500_utils
 def index(request):
     input_status = False
     translation = ""
-    companies = ""
+    companies = set()
     raw_translation = ""
 
     if request.method == 'POST':
