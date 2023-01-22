@@ -34,7 +34,8 @@ def generate(input):
         max_tokens=tokens,  
         temperature=0.9)
     
-    return "Classification: " + subject + " --- \n " + response.generations[0].text
+    # return "Classification: " + subject + " --- \n " + response.generations[0].text
+    return response.generations[0].text
 
 def classify_text(input):
     # Output whether propmt relates to:

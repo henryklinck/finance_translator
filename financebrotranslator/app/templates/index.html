@@ -19,7 +19,7 @@
         </div>
     </header>
 
-    
+
 
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
@@ -39,44 +39,48 @@
         </form>
         <div class="translation-right">
 
-            
+
             <div class="translation-output">
-                
+
                 <div class="translation-output-text">
 
-                <div id="summary">
-                    {% if input_status %}
+                    <div id="summary">
+                        {% if input_status %}
                         {{translation|safe}}
                         <div class="record-button">
                             <button type="button" onclick="startSpeaking()" id="mic-button">
                                 <i class="fa fa-volume-up" id="mic-icon"></i>
                             </button>
                         </div>
-                    {% endif %}
-                </div>
-
-                <div id="stocks">
-                    {% for company in companies %}
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-{{company}}/" rel="noopener" target="_blank"><span class="blue-text">{{company}} stock price</span></a> by TradingView</div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
-                        {
-                        "symbol": "NASDAQ:{{company}}",
-                        "width": 350,
-                        "colorTheme": "light",
-                        "isTransparent": true,
-                        "locale": "en"
-                    }
-                        </script>
+                        {% endif %}
                     </div>
-                    <br>
-                    {% endfor %}
-                </div>
-                
 
-            </div>
-            
+                    <div id="stocks">
+                        {% for company in companies %}
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <div class="tradingview-widget-copyright"><a
+                                    href="https://www.tradingview.com/symbols/NASDAQ-{{company}}/" rel="noopener"
+                                    target="_blank"><span class="blue-text">{{company}} stock price</span></a> by
+                                TradingView</div>
+                            <script type="text/javascript"
+                                src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                                    {
+                                        "symbol": "NASDAQ:{{company}}",
+                                            "width": 350,
+                                                "colorTheme": "light",
+                                                    "isTransparent": true,
+                                                        "locale": "en"
+                                    }
+                                </script>
+                        </div>
+                        <br>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+
             </div>
             <div class="switch-button"><span class="active"></span>
                 <button class="switch-button-case-left active-case" id="btn">Summary</button>
@@ -127,12 +131,12 @@
             spr.abort();
         }
 
-           }
+    }
 
     function startSpeaking() {
-        
+
         const synth = window.speechSynthesis;
-        let ourText = "{{raw}}";
+        let ourText = `{{raw}}`;
         const Speak = new SpeechSynthesisUtterance(ourText);
         synth.speak(Speak);
     }
@@ -143,7 +147,7 @@
     var switchBtnLeft = document.querySelector('.switch-button-case-left');
     var activeSwitch = document.querySelector('.active');
 
-    function switchLeft(){
+    function switchLeft() {
         switchBtnRight.classList.remove('active-case');
         switchBtnLeft.classList.add('active-case');
         activeSwitch.style.left = '0%';
@@ -151,7 +155,7 @@
         $('#summary').show()
     }
 
-    function switchRight(){
+    function switchRight() {
         switchBtnRight.classList.add('active-case');
         switchBtnLeft.classList.remove('active-case');
         activeSwitch.style.left = '50%';
@@ -159,14 +163,14 @@
         $('#summary').hide()
     }
 
-    switchBtnLeft.addEventListener('click', function(){
+    switchBtnLeft.addEventListener('click', function () {
         switchLeft();
     }, false);
 
-    switchBtnRight.addEventListener('click', function(){
+    switchBtnRight.addEventListener('click', function () {
         switchRight();
     }, false);
-    
+
 </script>
 
 </html>
