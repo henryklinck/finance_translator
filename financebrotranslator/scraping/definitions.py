@@ -30,6 +30,7 @@ def main():
                     definitions[term.text[:idx - 1].upper()] = term["href"]
                 if term.text[idx + 1:-1].upper() not in WORD_BLACKLIST:
                     definitions[term.text[idx + 1:-1].upper()] = term["href"]
+                definitions[".".join([c for c in term.text[idx + 1:-1]]) + "."] = term["href"]
             else:
                 if term.text.upper() not in WORD_BLACKLIST:
                     definitions[term.text.upper()] = term["href"]
