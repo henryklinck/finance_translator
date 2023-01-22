@@ -28,12 +28,14 @@ header {
 
 
 .header-text {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 h4 {
     text-align: left;
-
+    position: relative;
+    top: -10px;
+    left: 2px;
 }
 
 .icon {
