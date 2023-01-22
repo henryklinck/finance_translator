@@ -115,7 +115,8 @@ form {
     justify-content: center;
 
 }
-.text-boxes{
+
+.text-boxes {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -169,7 +170,7 @@ form {
     border-radius: 5pt;
 }
 
-.translation-right{
+.translation-right {
 
     width: 50%;
     height: 70%;
@@ -185,13 +186,14 @@ form {
     padding: 5pt;
     width: 80%;
     height: 100%;
-    
+
 
 }
 
 .translation-output-text {
     margin: 1rem;
     background-color: lightgray;
+    height: 94%;
 }
 
 .tradingview-widget-copyright {
@@ -213,7 +215,8 @@ form {
     order: 2;
 }
 
-.switch-button-case-left, .switch-button-case-right{
+.switch-button-case-left,
+.switch-button-case-right {
     display: inline-block;
     background: none;
     width: 49%;
@@ -240,4 +243,20 @@ form {
 
 .switch-button .active-case {
     color: white;
+}
+
+#summary {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+#summary .record-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.translation-input .record-button {
+    margin: 1.5rem;
 }

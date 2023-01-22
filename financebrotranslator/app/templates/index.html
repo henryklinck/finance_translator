@@ -46,7 +46,9 @@
 
                     <div id="summary">
                         {% if input_status %}
-                        {{translation|safe}}
+                        <div>
+                            {{translation|safe}}
+                        </div>
                         <div class="record-button">
                             <button type="button" onclick="startSpeaking()" id="mic-button">
                                 <i class="fa fa-volume-up" id="mic-icon"></i>
