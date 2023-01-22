@@ -3,19 +3,23 @@ from django.shortcuts import render
 from .forms import TranslateForm
 from .utils import cohere_utils, link_utils
 
+
 # Create your views here.
 def index(request):
     input_status = False
     translation = ""
 
     if request.method == 'POST':
-        form = TranslateForm(request.POST)
-        if form.is_valid() and (request.POST["text"] != ""):
-            input_status = True
-            raw_translation = cohere_utils.generate(request.POST["text"])
-            print(raw_translation)
-            translation = link_utils.add_definition_links(raw_translation)
-        form = TranslateForm()
+        if request.POST["action"] == "Translate":
+            form = TranslateForm(request.POST)
+            if form.is_valid() and (request.POST["text"] != ""):
+                input_status = True
+                raw_translation = cohere_utils.generate(request.POST["text"])
+                translation = link_utils.add_definition_links(raw_translation)
+        elif request.POST["action"] == "Clear Text":
+            form = TranslateForm()
+            input_status = False
+            translation = ""
     else:
         form = TranslateForm()
         input_status = False

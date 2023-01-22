@@ -43,7 +43,7 @@ def add_definition_links(text):
             current = current.children[text[j].upper()]
             j += 1
             if current.word != None and (j == len(text) or text[j] in (' ', '.', ',')):
-                output += f"<a href=\"{current.link}\">{text[i:j]}</a>"
+                output += f"<a href=\"{current.link}\" target='_blank' >{text[i:j]}</a>"
                 if j != len(text):
                     output += text[j]
                 current = root
@@ -56,8 +56,7 @@ def add_definition_links(text):
                     i += 1
                 j = i = i + 1
                 output += text[start:j]
-                j -= 1
-        j += 1
+            else:
+                j += 1
     
-
     return output
