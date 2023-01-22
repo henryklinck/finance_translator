@@ -40,13 +40,13 @@ def classify_text(input):
     # 2.) A Specific Investment (stock-related)
 
     # Opening market JSON file
-    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/market_text.json", 'r') as mrk_openfile:
+    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/market_text.json", 'r', errors='ignore') as mrk_openfile:
  
         # Reading from market json file
         json_market_exs = json.load(mrk_openfile)
 
     # Opening investment JSON file
-    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/investment_text.json", 'r') as inv_openfile:
+    with open(f"{os.path.dirname(os.path.abspath(__file__))}/cohere_training/investment_text.json", 'r', errors='ignore') as inv_openfile:
  
         # Reading from investment json file
         json_invest_exs = json.load(inv_openfile)
