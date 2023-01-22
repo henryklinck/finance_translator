@@ -36,7 +36,15 @@
         <div class="translation-output">
             <div class="translation-output-text">
 
-            {% if input_status %}{{translation|safe}}{% endif %}
+            {% if input_status %}
+                {{translation|safe}}
+                <div class="record-button">
+                    <button type="button" onclick="startSpeaking()" id="mic-button">
+                        <i class="fa fa-volume-up" id="mic-icon"></i>
+                    </button>
+                </div>
+            {% endif %}
+
         </div>
         </div>
     </div>
@@ -50,8 +58,7 @@
     spr.interimResults=true;
     spr.lang='en-IN';
 
-    function startConverting()
-           {
+    function startConverting() {
             recording = !recording;
 
             if (recording) {
@@ -84,6 +91,15 @@
             }
 
            }
+
+    function startSpeaking() {
+        
+        const synth = window.speechSynthesis;
+        let ourText = "{{raw}}";
+        const Speak = new SpeechSynthesisUtterance(ourText);
+        synth.speak(Speak);
+    }
+    
 </script>
 
 </html>

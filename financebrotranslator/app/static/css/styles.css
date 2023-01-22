@@ -71,6 +71,21 @@ textarea {
     cursor: pointer;
 }
 
+.translation-output button {
+    font-size: 32px;
+    background-color: white;
+    display: block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 0 0 0.5rem 0.5rem;
+}
+
+.translation-output button:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
 form {
     display: flex;
     flex-direction: column;

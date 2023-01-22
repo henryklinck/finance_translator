@@ -13,7 +13,7 @@ def index(request):
         if form.is_valid() and (request.POST["text"] != ""):
             input_status = True
             raw_translation = cohere_utils.generate(request.POST["text"])
-            print("here")
+            print(raw_translation)
             translation = link_utils.add_definition_links(raw_translation)
         form = TranslateForm()
     else:
@@ -21,4 +21,4 @@ def index(request):
         input_status = False
         translation = ""
 
-    return render(request, 'index.html', {'form': form, 'input_status': input_status, 'translation': translation})
+    return render(request, 'index.html', {'form': form, 'input_status': input_status, 'translation': translation, 'raw': raw_translation})

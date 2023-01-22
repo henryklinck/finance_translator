@@ -32,7 +32,7 @@ def generate(prompt):
         max_tokens=tokens,  
         temperature=0.9)
     
-    return "Classify: " + str(classify_subject) + " .   Subject Prompt: " + prompt_subject + response.generations[0].text
+    return response.generations[0].text
 
 def generate_subject(prompt):
     prompt = "List the subject in school would study this message: " + prompt + "\n \n Subject:" 
