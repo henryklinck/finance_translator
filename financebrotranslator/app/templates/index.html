@@ -18,6 +18,12 @@
                 understandable!</h4>
         </div>
     </header>
+
+    <div class="switch-button"><span class="active"></span>
+        <button class="switch-button-case-left active-case" id="btn">Summary</button>
+        <button class="switch-button-case-right" id="btn">Stocks</button>
+    </div>
+
     <div class="translation">
         <form action="/" method="post">{% csrf_token %}
             <div class="translation-input">
@@ -31,23 +37,46 @@
 
             <div class="text-buttons">
                 <input type="submit" name="action" value="Translate" class="submit-button">
-                <input type="submit" name="action" value="Clear Text" class="clear-button">
             </div>
         </form>
+
         <div class="translation-output">
+
             <div class="translation-output-text">
 
-            {% if input_status %}
-                {{translation|safe}}
-                <div class="record-button">
-                    <button type="button" onclick="startSpeaking()" id="mic-button">
-                        <i class="fa fa-volume-up" id="mic-icon"></i>
-                    </button>
+            <div id="summary">
+                {% if input_status %}
+                    {{translation|safe}}
+                    <div class="record-button">
+                        <button type="button" onclick="startSpeaking()" id="mic-button">
+                            <i class="fa fa-volume-up" id="mic-icon"></i>
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div id="stocks">
+                {% for company in companies %}
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-{{company}}/" rel="noopener" target="_blank"><span class="blue-text">{{company}} stock price</span></a> by TradingView</div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                    {
+                    "symbol": "NASDAQ:{{company}}",
+                    "width": 350,
+                    "colorTheme": "light",
+                    "isTransparent": true,
+                    "locale": "en"
+                }
+                    </script>
                 </div>
-            {% endif %}
+                <br>
+                {% endfor %}
+            </div>
 
         </div>
         </div>
+
     </div>
 </body>
 
@@ -101,6 +130,36 @@
         const Speak = new SpeechSynthesisUtterance(ourText);
         synth.speak(Speak);
     }
+
+    $('#stocks').hide()
+
+    var switchBtnRight = document.querySelector('.switch-button-case-right');
+    var switchBtnLeft = document.querySelector('.switch-button-case-left');
+    var activeSwitch = document.querySelector('.active');
+
+    function switchLeft(){
+        switchBtnRight.classList.remove('active-case');
+        switchBtnLeft.classList.add('active-case');
+        activeSwitch.style.left = '0%';
+        $('#stocks').hide()
+        $('#summary').show()
+    }
+
+    function switchRight(){
+        switchBtnRight.classList.add('active-case');
+        switchBtnLeft.classList.remove('active-case');
+        activeSwitch.style.left = '50%';
+        $('#stocks').show()
+        $('#summary').hide()
+    }
+
+    switchBtnLeft.addEventListener('click', function(){
+        switchLeft();
+    }, false);
+
+    switchBtnRight.addEventListener('click', function(){
+        switchRight();
+    }, false);
     
 </script>
 

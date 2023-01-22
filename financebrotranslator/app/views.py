@@ -8,6 +8,7 @@ from .utils import cohere_utils, link_utils
 def index(request):
     input_status = False
     translation = ""
+    companies = ""
 
     if request.method == 'POST':
         if request.POST["action"] == "Translate":
@@ -16,6 +17,7 @@ def index(request):
                 input_status = True
                 raw_translation = cohere_utils.generate(request.POST["text"])
                 translation = link_utils.add_definition_links(raw_translation)
+                companies = sp500_utils.get_stocks(raw_translation)
         elif request.POST["action"] == "Clear Text":
             form = TranslateForm()
             input_status = False
@@ -25,4 +27,4 @@ def index(request):
         input_status = False
         translation = ""
 
-    return render(request, 'index.html', {'form': form, 'input_status': input_status, 'translation': translation, 'raw': raw_translation})
+    return render(request, 'index.html', {'form': form, 'input_status': input_status, 'translation': translation, 'raw': raw_translation, 'companies': companies})
