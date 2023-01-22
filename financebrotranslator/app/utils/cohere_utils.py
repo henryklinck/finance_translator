@@ -79,5 +79,6 @@ def classify_text(prompt):
         inputs=[prompt],
         examples=examples)
     
+    # Returns prediction: "i" or "m"
     return response.classifications[0].prediction
 
