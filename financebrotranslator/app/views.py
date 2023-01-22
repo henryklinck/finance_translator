@@ -18,7 +18,7 @@ def index(request):
                 input_status = True
                 raw_translation = cohere_utils.generate(request.POST["text"])
                 translation = link_utils.add_definition_links(raw_translation)
-                companies = sp500_utils.get_stocks(raw_translation)
+                companies = sp500_utils.get_stocks(request.POST["text"])
         elif request.POST["action"] == "Clear Text":
             form = TranslateForm()
             input_status = False
