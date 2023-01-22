@@ -21,20 +21,23 @@ def generate(input):
     subject = classify_text(input) 
 
     # Based on subject of input, prompt co:here ,command, to explain the input in simplier terms
-    # prompt = 'Explain what this ' + subject + ' message means to a 5 year-old: \"' + input + '\" \n'
+    prompt = 'Explain what this ' + subject + ' message means to a 5 year-old: \"' + input + '\" \n'
     # prompt = 'Do the foll0wing for the text:\n1. Find all of the finance terms that are in the text and list them in a dictionary format with key=term: value=description \n2. Extract the different companies involved \n3. Simplify the information \nText:' + input + '\" \n'
-    prompt = 'Explain this ' + subject + ' message in simple terms: \"' + input + '\" \n'
+    # prompt = 'Explain this ' + subject + ' message in simple terms: \"' + input + '\" \n'
 
     # Output should be a max size of input.length * 1.3
-    tokens = round(1.3 * int(tokenize(input)))
+    tokens = round(1.5 * int(tokenize(input)))
     co = initialize_cohere()
     response = co.generate(
         model='command-xlarge-nightly',  
         prompt=prompt,  
         max_tokens=tokens,  
         temperature=0.9)
+
+    output = response.generations[0].text
     
-    return "Classification: " + subject + " --- \n " + response.generations[0].text
+    # return "Classification: " + subject + " --- \n " + response.generations[0].text
+    return clean_output(output)
 
 def classify_text(input):
     # Output whether propmt relates to:
@@ -70,4 +73,29 @@ def classify_text(input):
     
     # Returns prediction: "economic" or "stock-related"
     return response.classifications[0].prediction
+
+def clean_output(text):
+    # Input text arg is string
+    text = text.strip()
+
+    ends = {".", "!", "?"}
+
+    searching = True
+    curr_index = len(text) - 1
+
+    if text[-1] in ends:
+        return text
+    else:
+        while (searching):
+            if text[curr_index] in ends:
+                searching = False
+            elif curr_index == 0:
+                searching = False
+            else:
+                curr_index -= 1
+
+    return text[:curr_index]
+                
+
+
 
